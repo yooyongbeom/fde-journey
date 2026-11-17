@@ -13,10 +13,13 @@ res = client.messages.create(
     ]
 )
 
-print(f"content ======  {res.content}")
-
+#print(f"content ======  {res.content}")
 answer = ""
 for block in res.content:
     if block.type == "text":
         answer += block.text
 print(answer)
+
+print(type(res.content[0]))            # 객체 타입 확인
+print(res.usage)                       # 토큰 수 → 비용 감각
+print(res.model_dump_json(indent=2))   # 응답 전체 구조
